@@ -25,4 +25,8 @@ export const placemarkMemStore = {
   async deleteAllPlacemarks() {
     placemarks = [];
   },
+
+  async getUserPlacemarks(userid) {
+    return placemarks.filter((placemark) => placemark.userid === userid);
+  },
 };
