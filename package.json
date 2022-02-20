@@ -1,0 +1,34 @@
+{
+  "name": "placemark",
+  "version": "0.1.0",
+  "description": "placemark, a Hapi/node application for managing craft related landmark locations",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "lint": "./node_modules/.bin/eslint . --ext .js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fiona-Waters/placemark.git"
+  },
+  "author": "fiona waters",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fiona-Waters/placemark/issues"
+  },
+  "homepage": "https://github.com/Fiona-Waters/placemark#readme",
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-plugin-import": "^2.25.4",
+    "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.2.1",
+    "@hapi/vision": "^6.1.0",
+    "handlebars": "^4.7.7",
+    "uuid": "^8.3.2"
+  }
+}
