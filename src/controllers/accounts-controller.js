@@ -4,13 +4,13 @@ export const accountsController = {
   index: {
     auth: false,
     handler: function (request, h) {
-      return h.view("main", { title: "Welcome to YarnSearch" });
+      return h.view("main", { title: "Welcome to CraftSpot" });
     },
   },
   showSignup: {
     auth: false,
     handler: function (request, h) {
-      return h.view("signup-view", { title: "Sign up for YarnSearch" });
+      return h.view("signup-view", { title: "Sign up for CraftSpot" });
     },
   },
   signup: {
@@ -24,7 +24,7 @@ export const accountsController = {
   showLogin: {
     auth: false,
     handler: function (request, h) {
-      return h.view("login-view", { title: "Login to YarnSearch" });
+      return h.view("login-view", { title: "Login to CraftSpot" });
     },
   },
   login: {

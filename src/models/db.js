@@ -1,12 +1,12 @@
 import { userMemStore } from "./mem/user-mem-store.js";
-import { placemarkMemStore } from "./mem/placemark-mem-store.js";
+import { craftMemStore } from "./mem/craft-mem-store.js";
 
 export const db = {
   userStore: null,
-  placemarkStore: null,
+  craftStore: null,
 
   init() {
     this.userStore = userMemStore;
-    this.placemarkStore = placemarkMemStore;
+    this.craftStore = craftMemStore;
   },
 };

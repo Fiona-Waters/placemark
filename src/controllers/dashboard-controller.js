@@ -4,24 +4,24 @@ export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const placemarks = await db.placemarkStore.getUserPlacemarks(loggedInUser._id);
+      const crafts = await db.craftStore.getUserCrafts(loggedInUser._id);
       const viewData = {
-        title: "Placemark Dashboard",
+        title: "CraftSpot Dashboard",
         user: loggedInUser,
-        placemarks: placemarks,
+        crafts: crafts,
       };
       return h.view("dashboard-view", viewData);
     },
   },
 
-  addPlacemark: {
+  addCraft: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const newPlacemark = {
+      const newCraft = {
         userid: loggedInUser._id,
         title: request.payload.title,
       };
-      await db.placemarkStore.addPlacemark(newPlacemark);
+      await db.craftStore.addCraft(newCraft);
       return h.redirect("/dashboard");
     },
   },
