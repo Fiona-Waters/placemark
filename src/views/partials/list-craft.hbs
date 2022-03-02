@@ -1,5 +1,5 @@
 {{#each crafts}}
-  <div class="box box-link-hover-shadow">
+  <div class="box box-link-hover-shadow has-background-success-light">
     <h2 class="title">
       {{title}}
     </h2>
@@ -7,6 +7,9 @@
       <span class="icon is-small">
         <i class="fas fa-folder-open"></i>
       </span>
+    </a>
+    <a href="/dashboard/deletecraft/{{_id}}" class="button">
+      <i class="fas fa-trash"></i>
     </a>
   </div>
 {{/each}}

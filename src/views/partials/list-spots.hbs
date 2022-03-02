@@ -1,10 +1,11 @@
-<table class="table is-fullwidth">
+<table class="table is-fullwidth is-striped has-background-success-light">
   <thead>
     <tr>
       <th>Place Name</th>
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Description</th>
+      <th>Delete Spot</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,11 @@
         </td>
         <td>
           {{description}}
+        </td>
+        <td>
+          <a href="/craft/{{../craft._id}}/deletespot/{{_id}}" class="ui icon button">
+            <i class="fas fa-trash"></i>
+          </a>
         </td>
       </tr>
     {{/each}}

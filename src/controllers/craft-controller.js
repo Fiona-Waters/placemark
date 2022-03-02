@@ -25,4 +25,12 @@ export const craftController = {
       return h.redirect(`/craft/${craft._id}`);
     },
   },
+
+  deleteSpot: {
+      handler: async function (request, h) {
+          const craft = await db.craftStore.getCraftById(request.params.id);
+          await db.spotStore.deleteSpot(request.params.spotid);
+          return h.redirect(`/craft/${craft._id}`);
+      },
+  },
 };
