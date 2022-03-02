@@ -25,4 +25,12 @@ export const dashboardController = {
       return h.redirect("/dashboard");
     },
   },
+
+  deleteCraft: {
+    handler: async function (request, h) {
+      const craft = await db.craftStore.getCraftById(request.params.id);
+      await db.craftStore.deleteCraftById(craft._id);
+      return h.redirect("/dashboard");
+    }
+  }
 };
