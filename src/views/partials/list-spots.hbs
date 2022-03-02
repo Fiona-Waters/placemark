@@ -1,0 +1,28 @@
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Place Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each craft.spots}}
+      <tr>
+        <td>
+          {{placeName}}
+        </td>
+        <td>
+          {{lat}}
+        </td>
+        <td>
+            {{lng}}
+        </td>
+        <td>
+          {{description}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
