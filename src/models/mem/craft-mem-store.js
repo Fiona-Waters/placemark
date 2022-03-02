@@ -1,4 +1,5 @@
 import { v4 } from "uuid";
+import { spotMemStore } from "./spot-mem-store.js"
 
 let crafts = [];
 
@@ -14,7 +15,9 @@ export const craftMemStore = {
   },
 
   async getCraftById(id) {
-    return crafts.find((craft) => craft._id === id);
+    const list = crafts.find((craft) => craft._id === id);
+    list.spots = await spotMemStore.getSpotsByCraftId(list._id);
+    return list;
   },
 
   async deleteCraftById(id) {
