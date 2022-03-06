@@ -1,0 +1,20 @@
+{
+  "spots": [
+    {
+      "placeName": "Winnies Craft Cafe",
+      "lat": 52.149,
+      "lng": -6.994,
+      "description": "A great place.",
+      "_id": "b6e722be-d8de-4238-a935-6ccaa0320abc",
+      "craftid": "151e127c-99ee-4547-92fd-2dd0fd620758"
+    },
+    {
+      "placeName": "The Knitting Room",
+      "lat": 53.34,
+      "lng": 6.2603,
+      "description": "Another brilliant place",
+      "_id": "8dda4620-15c4-41dd-a3d5-3e572e332862",
+      "craftid": "151e127c-99ee-4547-92fd-2dd0fd620758"
+    }
+  ]
+}
