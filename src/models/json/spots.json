@@ -1,20 +1,20 @@
 {
   "spots": [
     {
-      "placeName": "Winnies Craft Cafe",
-      "lat": 52.149,
-      "lng": -6.994,
-      "description": "A great place.",
-      "_id": "b6e722be-d8de-4238-a935-6ccaa0320abc",
-      "craftid": "151e127c-99ee-4547-92fd-2dd0fd620758"
+      "placeName": "The Constant Knitter",
+      "lat": 12.12,
+      "lng": -4.13,
+      "description": "This shop sells all sorts of yarn and has a fab meeting room upstairs where they hold knit nights",
+      "_id": "022709a4-3bcb-4ef4-9876-cccd7a3e327b",
+      "craftid": "09579877-937f-4214-b785-fce495c87a75"
     },
     {
       "placeName": "The Knitting Room",
-      "lat": 53.34,
-      "lng": 6.2603,
-      "description": "Another brilliant place",
-      "_id": "8dda4620-15c4-41dd-a3d5-3e572e332862",
-      "craftid": "151e127c-99ee-4547-92fd-2dd0fd620758"
+      "lat": 45.12,
+      "lng": -6.65,
+      "description": "Such a lovely yarn shop, and the owner is so nice and helpful",
+      "_id": "f79c202b-98f6-4201-8caa-d5c18134d981",
+      "craftid": "09579877-937f-4214-b785-fce495c87a75"
     }
   ]
 }

@@ -27,7 +27,9 @@ export const spotJsonStore = {
 
   async getSpotById(id) {
     await db.read();
-    return db.data.spots.find((spot) => spot._id === id);
+    let s = db.data.spots.find((spot) => spot._id === id);
+    if (s === undefined) s = null;
+    return s;
   },
 
   async deleteSpot(id) {

@@ -1,6 +1,7 @@
 import { db } from "../models/db.js";
 import { UserSpec, UserCredentialsSpec } from "../models/joi-schemas.js";
 
+
 export const accountsController = {
   index: {
     auth: false,
@@ -69,4 +70,27 @@ export const accountsController = {
     }
     return { valid: true, credentials: user };
   },
+
+  showUserDetails: {
+    auth: false,
+    handler: function (request, h) {
+    const loggedInUser = request.auth.credentials;
+    return h.view("my-account-view", loggedInUser);
+  },
+},
+
+updateUserDetails: {
+  auth: false,
+  handler: async function (request, h){
+    const user = request.payload;
+    user.updatedfirstName = request.payload.firstName;
+    user.updatedlastName = request.payload.lastName;
+    user.updatedEmail = request.payload.email;
+    user.updatedPassword = request.payload.password;
+    await db.userStore.saveUser(user);
+    return h.view("login-view");
+  },
+},
+
 };
+
