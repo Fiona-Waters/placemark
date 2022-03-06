@@ -48,7 +48,7 @@ async function init() {
     layout: true,
     isCached: false,
   });
-  db.init();
+  db.init("json");
   server.route(webRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);

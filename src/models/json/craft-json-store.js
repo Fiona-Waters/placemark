@@ -22,8 +22,12 @@ export const craftJsonStore = {
 
   async getCraftById(id) {
     await db.read();
-    const list = db.data.crafts.find((craft) => craft._id === id);
-    list.spots = await spotJsonStore.getSpotsByCraftId(list._id);
+    let list = db.data.crafts.find((craft) => craft._id === id);
+    if (list) {
+      list.spots = await spotJsonStore.getSpotsByCraftId(list._id);
+    } else {
+      list = null;
+    }
     return list;
   },
 
@@ -35,7 +39,7 @@ export const craftJsonStore = {
   async deleteCraftById(id) {
     await db.read();
     const index = db.data.crafts.findIndex((craft) => craft._id === id);
-    db.data.crafts.splice(index, 1);
+    if ( index !== -1) db.data.crafts.splice(index, 1);
     await db.write();
   },
 

@@ -1,14 +1,8 @@
 {
   "crafts": [
     {
-      "userid": "b74e63f1-2417-48ee-89d2-070bc2d1500b",
-      "title": "Knitting",
-      "_id": "151e127c-99ee-4547-92fd-2dd0fd620758"
-    },
-    {
-      "userid": "b74e63f1-2417-48ee-89d2-070bc2d1500b",
       "title": "Crochet",
-      "_id": "009367d9-3a23-4b4d-83ad-8eb28c179abb"
+      "_id": "0121a172-e327-426a-adc8-5ae79b2186a0"
     }
   ]
 }
