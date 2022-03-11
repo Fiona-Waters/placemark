@@ -5,6 +5,7 @@ export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
+      console.log(loggedInUser);
       const crafts = await db.craftStore.getUserCrafts(loggedInUser._id);
       const viewData = {
         title: "CraftSpot Dashboard",

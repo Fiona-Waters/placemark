@@ -63,34 +63,45 @@ export const accountsController = {
     },
   },
 
+  // I don't think I'm using this? Maybe use it to tidy up 2 methods below?
+  async getCurrentUser(request) {
+    const loggedInUser = request.auth.credentials;
+    return loggedInUser;  
+  },
+
+  showUserDetails: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const user = await db.userStore.getUserById(loggedInUser._id);
+      const viewData = {
+        title: "My Account",
+        user: user,
+      };
+      return h.view("my-account-view", viewData);
+    }
+  },
+
+  updateUserDetails: {
+    handler: async function (request, h) {
+    const loggedInUser = request.auth.credentials;
+    const user = await db.userStore.getUserById(loggedInUser._id);
+    user.firstName = request.payload.firstName;
+    user.lastName = request.payload.lastName;
+    user.email = request.payload.email;
+    user.password = request.payload.password;
+    await db.userStore.save();
+    console.log(user);
+    return h.view("login-view");
+    }
+  },
+ 
   async validate(request, session) {
-    const user = await db.userStore.getUserById(session.id);
+    const user = await db.userStore.getUserById(session.id); //
     if (!user) {
       return { valid: false };
     }
     return { valid: true, credentials: user };
   },
 
-  showUserDetails: {
-    auth: false,
-    handler: function (request, h) {
-    const loggedInUser = request.auth.credentials;
-    return h.view("my-account-view", loggedInUser);
-  },
-},
-
-updateUserDetails: {
-  auth: false,
-  handler: async function (request, h){
-    const user = request.payload;
-    user.updatedfirstName = request.payload.firstName;
-    user.updatedlastName = request.payload.lastName;
-    user.updatedEmail = request.payload.email;
-    user.updatedPassword = request.payload.password;
-    await db.userStore.saveUser(user);
-    return h.view("login-view");
-  },
-},
-
-};
+  };
 
