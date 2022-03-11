@@ -1,0 +1,53 @@
+{
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret",
+      "_id": "81251b24-50d4-4946-a14f-d517a536a157"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret",
+      "_id": "f094c44c-7b27-4c1e-9410-174f545b2bb8"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret",
+      "_id": "cd028c30-ffa2-4244-8c6e-8135df4d0ab8"
+    },
+    {
+      "firstName": "Fiona",
+      "lastName": "Waters",
+      "email": "fiona@waters.com",
+      "password": "84Qn@z7!!7rpHLt",
+      "_id": "61f8eb69-a6b0-453b-8c20-cf31cc63c9fa"
+    },
+    {
+      "firstName": "Leo",
+      "lastName": "Waters",
+      "email": "leo@waters.com",
+      "password": "leo",
+      "_id": "4b0755e1-672d-41ab-81be-74b98cd43acf"
+    },
+    {
+      "firstName": "Taylor",
+      "lastName": "Swift",
+      "email": "taylor@swift.com",
+      "password": "taylor",
+      "_id": "5686d54c-35fc-4d2e-a309-89c12f2c062a"
+    },
+    {
+      "firstName": "Donald",
+      "lastName": "Duck",
+      "email": "donald@duck.com",
+      "password": "LPggdKj4bp@h8vZ",
+      "_id": "7f9a9529-20aa-43ce-8e8c-949055ad0c2d"
+    }
+  ]
+}

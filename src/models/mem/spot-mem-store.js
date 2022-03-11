@@ -19,18 +19,18 @@ export const spotMemStore = {
   },
 
   async getSpotById(id) {
-    return spots.find((spot) => spot._id === id);
+    const list = spots.find((spot) => spot._id === id);
   },
 
-  async getCraftSpots(craftid) {
+  async getCraftSpots(craftId) {
     return spots.filter((spot) => spot.craftid === craftId);
   },
 
-  async deleteSpot(id) {
-    const index = spots.findIndex((spot) => spot._id === id);
+  async deleteSpot(id){
+    const index = spots.findIndex((spot._id) === id);
     spots.splice(index, 1);
   },
-
+  
   async deleteAllSpots() {
     spots = [];
   },

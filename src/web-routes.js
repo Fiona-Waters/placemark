@@ -18,4 +18,8 @@ export const webRoutes = [
   { method: "POST", path: "/craft/{id}/addspot", config: craftController.addSpot },
   { method: "GET", path: "/dashboard/deletecraft/{id}", config: dashboardController.deleteCraft },
   { method: "GET", path: "/craft/{id}/deletespot/{spotid}", config: craftController.deleteSpot },
+
+  { method: "GET", path: "/my-account", config: accountsController.showUserDetails },
+  { method: "POST", path: "/updateuserdetails", config: accountsController.updateUserDetails}
+
 ];

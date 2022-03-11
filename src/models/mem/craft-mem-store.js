@@ -16,13 +16,16 @@ export const craftMemStore = {
 
   async getCraftById(id) {
     const list = crafts.find((craft) => craft._id === id);
+    if (list) {
     list.spots = await spotMemStore.getSpotsByCraftId(list._id);
     return list;
+    }
+    return null;
   },
 
   async deleteCraftById(id) {
     const index = crafts.findIndex((craft) => craft._id === id);
-    crafts.splice(index, 1);
+    if (index !== -1) crafts.splice(index, 1);
   },
 
   async deleteAllCrafts() {
