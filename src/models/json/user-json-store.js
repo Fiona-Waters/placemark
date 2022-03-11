@@ -44,8 +44,9 @@ export const userJsonStore = {
     db.data.users = [];
     await db.write();
   },
+  
+  async save() {
+    await db.write();
+  },
 
-  async saveUser(user) {
-    await db.write(user);
-  }
 };
