@@ -1,8 +1,14 @@
+export const ROLE = {
+    ADMIN: "admin",
+    BASIC: "basic"
+}
+
 export const donald = {
     firstName: "Donald",
     lastName: "Duck",
     email: "donald@duck.com",
     password: "secret",
+    role: ROLE.ADMIN,
   };
 
 export const testUsers = [
@@ -11,18 +17,21 @@ export const testUsers = [
       lastName: "Simpson",
       email: "homer@simpson.com",
       password: "secret",
+      role: ROLE.BASIC,
     },
     {
       firstName: "Marge",
       lastName: "Simpson",
       email: "marge@simpson.com",
       password: "secret",
+      role: ROLE.BASIC,
     },
     {
       firstName: "Bart",
       lastName: "Simpson",
       email: "bart@simpson.com",
       password: "secret",
+      role: ROLE.BASIC,
     },
   ];
 
