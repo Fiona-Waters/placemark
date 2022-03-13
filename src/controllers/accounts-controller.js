@@ -51,7 +51,7 @@ export const accountsController = {
       if (!user || user.password !== password) {
         return h.redirect("/");
       }
-      request.cookieAuth.set({ id: user._id});
+      request.cookieAuth.set({ id: user._id });
       return h.redirect("/dashboard");
     },
   },
@@ -66,7 +66,7 @@ export const accountsController = {
   // I don't think I'm using this? Maybe use it to tidy up 2 methods below?
   async getCurrentUser(request) {
     const loggedInUser = request.auth.credentials;
-    return loggedInUser;  
+    return loggedInUser;
   },
 
   showUserDetails: {
@@ -78,30 +78,29 @@ export const accountsController = {
         user: user,
       };
       return h.view("my-account-view", viewData);
-    }
+    },
   },
 
   updateUserDetails: {
     handler: async function (request, h) {
-    const loggedInUser = request.auth.credentials;
-    const user = await db.userStore.getUserById(loggedInUser._id);
-    user.firstName = request.payload.firstName;
-    user.lastName = request.payload.lastName;
-    user.email = request.payload.email;
-    user.password = request.payload.password;
-    await db.userStore.save();
-    console.log(user);
-    return h.view("login-view");
-    }
+      const loggedInUser = request.auth.credentials;
+      const user = await db.userStore.getUserById(loggedInUser._id);
+      user.firstName = request.payload.firstName;
+      user.lastName = request.payload.lastName;
+      user.email = request.payload.email;
+      user.password = request.payload.password;
+      await db.userStore.save();
+      console.log(user);
+      return h.view("login-view");
+    },
   },
- 
+
   async validate(request, session) {
-    const user = await db.userStore.getUserById(session.id); //
+    const user = await db.userStore.getUserById(session.id); 
     if (!user) {
       return { valid: false };
     }
-    return { valid: true, credentials: user };
+    return { valid: true, credentials: user, permissions: user.permission };
   },
-
-  };
+};
 

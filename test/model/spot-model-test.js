@@ -40,6 +40,7 @@ suite("Spot Model tests", () => {
     assertSubset(oneSpot, newSpot)
   });
 
+
   test("delete One Spot - success", async () => {
     const id = testSpots[0]._id;
     await db.spotStore.deleteSpot(id);
@@ -59,4 +60,14 @@ suite("Spot Model tests", () => {
     const spots = await db.spotStore.getAllSpots();
     assert.equal(spots.length, testCrafts.length);
   });
+});
+
+test("delete One User - fail", async () => {
+  for (let i = 0; i < testUsers.length; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
+    await db.userStore.addUser(testUsers[i]);
+  }
+  await db.userStore.deleteUserById("bad-id");
+  const allUsers = await db.userStore.getAllUsers();
+  assert.equal(testUsers.length, allUsers.length);
 });

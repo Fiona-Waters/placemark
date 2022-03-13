@@ -1,0 +1,29 @@
+<table class="table is-fullwidth is-striped has-background-success-light">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Delete User</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+      <tr>
+        <td>
+          {{firstName}}
+        </td>
+        <td>
+          {{lastName}}
+        </td>
+        <td>
+            {{email}}
+        </td>
+        <td>
+          <a href="/admin-dashboard/deleteuser/{{_id}}" class="button">
+      <i class="fas fa-trash"></i>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

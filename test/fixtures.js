@@ -3,6 +3,7 @@ export const donald = {
     lastName: "Duck",
     email: "donald@duck.com",
     password: "secret",
+    permission: "ADMIN",
   };
 
 export const testUsers = [
