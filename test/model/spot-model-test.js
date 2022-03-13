@@ -8,7 +8,7 @@ suite("Spot Model tests", () => {
     let newCraftList = null;
 
   setup(async () => {
-    db.init("json");
+    db.init("mongo");
     await db.craftStore.deleteAllCrafts();
     await db.spotStore.deleteAllSpots();
     newCraftList = await db.craftStore.addCraft(oneCraft)
@@ -60,14 +60,4 @@ suite("Spot Model tests", () => {
     const spots = await db.spotStore.getAllSpots();
     assert.equal(spots.length, testCrafts.length);
   });
-});
-
-test("delete One User - fail", async () => {
-  for (let i = 0; i < testUsers.length; i += 1) {
-    // eslint-disable-next-line no-await-in-loop
-    await db.userStore.addUser(testUsers[i]);
-  }
-  await db.userStore.deleteUserById("bad-id");
-  const allUsers = await db.userStore.getAllUsers();
-  assert.equal(testUsers.length, allUsers.length);
 });

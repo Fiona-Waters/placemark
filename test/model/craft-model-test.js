@@ -1,11 +1,12 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js"
 import { testCrafts, oneCraft } from "../fixtures.js";
+import { assertSubset } from "../test-utils.js";
 
 suite("Craft Model tests", () => {
 
   setup(async () => {
-    db.init("json");
+    db.init("mongo");
     await db.craftStore.deleteAllCrafts();
     for (let i = 0; i < testCrafts.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
@@ -15,7 +16,7 @@ suite("Craft Model tests", () => {
 
   test("create a craft", async () => {
     const craft = await db.craftStore.addCraft(oneCraft);
-    assert.equal(oneCraft, craft);
+    assertSubset(oneCraft, craft);
     assert.isDefined(craft._id);
   });
 
@@ -30,7 +31,7 @@ suite("Craft Model tests", () => {
   test("get a craft - success", async () => {
     const craft = await db.craftStore.addCraft(oneCraft);
     const returnedCraft = await db.craftStore.getCraftById(craft._id);
-    assert.equal(oneCraft, craft);
+    assertSubset(oneCraft, craft);
   });
 
   test("delete One Craft - success", async () => {

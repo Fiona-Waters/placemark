@@ -38,6 +38,7 @@
     "hapi-error": "^2.3.0",
     "joi": "^17.6.0",
     "lowdb": "^3.0.0",
+    "mongoose": "^6.2.0",
     "uuid": "^8.3.2"
   },
   "engines": {

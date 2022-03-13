@@ -1,23 +1,8 @@
 {
   "crafts": [
     {
-      "title": "Crochet",
-      "_id": "0121a172-e327-426a-adc8-5ae79b2186a0"
-    },
-    {
-      "userid": "4b0755e1-672d-41ab-81be-74b98cd43acf",
-      "title": "Needlework",
-      "_id": "8371e2ef-ec9e-475b-aae8-a359dc835b38"
-    },
-    {
-      "userid": "4b0755e1-672d-41ab-81be-74b98cd43acf",
       "title": "Knitting",
-      "_id": "012eb36c-f8bd-49b1-b0e4-c72e72749b78"
-    },
-    {
-      "userid": "7f9a9529-20aa-43ce-8e8c-949055ad0c2d",
-      "title": "Woohoo",
-      "_id": "9726e9fa-ebc6-4575-be44-c7c7bddcf9a5"
+      "_id": "1ea051dd-4ac7-4aa9-b4da-92e58d5eb4a6"
     }
   ]
 }

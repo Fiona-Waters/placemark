@@ -5,16 +5,16 @@
       "lat": 12.12,
       "lng": -4.13,
       "description": "This shop sells all sorts of yarn and has a fab meeting room upstairs where they hold knit nights",
-      "_id": "022709a4-3bcb-4ef4-9876-cccd7a3e327b",
-      "craftid": "09579877-937f-4214-b785-fce495c87a75"
+      "_id": "31e5c98c-6857-44b5-971b-285ff3aaae04",
+      "craftid": "1ea051dd-4ac7-4aa9-b4da-92e58d5eb4a6"
     },
     {
       "placeName": "The Knitting Room",
       "lat": 45.12,
       "lng": -6.65,
       "description": "Such a lovely yarn shop, and the owner is so nice and helpful",
-      "_id": "f79c202b-98f6-4201-8caa-d5c18134d981",
-      "craftid": "09579877-937f-4214-b785-fce495c87a75"
+      "_id": "ca440244-1bef-454e-a47c-b4e694dee1f8",
+      "craftid": "1ea051dd-4ac7-4aa9-b4da-92e58d5eb4a6"
     }
   ]
 }
