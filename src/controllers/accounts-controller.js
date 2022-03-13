@@ -63,33 +63,6 @@ export const accountsController = {
     },
   },
 
-  showAdminLogin: {
-    auth: false,
-    handler: function (request, h) {
-      return h.view("admin-view", { title: "Admin Login Area" });
-    },
-  },
-
-  adminLogin: {
-    auth: false,
-    validate: {
-      payload: UserCredentialsSpec,
-      options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("admin-view", { title: "Log In Error", errors: error.details }).takeover().code(400);
-      },
-    },
-    handler: async function (request, h) {
-      const { email, password } = request.payload;
-      const user = await db.userStore.getUserByEmail(email);
-      if (!user || user.password !== password) {
-        return h.redirect("/");
-      }
-      request.cookieAuth.set({ id: user._id });
-      return h.redirect("/admin-dashboard")
-    },
-  },
-
   // I don't think I'm using this? Maybe use it to tidy up 2 methods below?
   async getCurrentUser(request) {
     const loggedInUser = request.auth.credentials;
@@ -123,11 +96,11 @@ export const accountsController = {
   },
 
   async validate(request, session) {
-    const user = await db.userStore.getUserById(session.id); //
+    const user = await db.userStore.getUserById(session.id); 
     if (!user) {
       return { valid: false };
     }
-    return { valid: true, credentials: user };
+    return { valid: true, credentials: user, permissions: user.permission };
   },
 };
 

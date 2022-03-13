@@ -40,7 +40,8 @@
       "lastName": "Duck",
       "email": "donald@duck.com",
       "password": "LPggdKj4bp@h8vZ",
-      "_id": "7f9a9529-20aa-43ce-8e8c-949055ad0c2d"
+      "_id": "7f9a9529-20aa-43ce-8e8c-949055ad0c2d",
+      "permission": "ADMIN"
     },
     {
       "firstName": "Juno",

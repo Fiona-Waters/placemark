@@ -1,8 +1,12 @@
-import { ROLE } from "../../test/fixtures.js";
 import { db } from "../models/db.js";
 
 export const adminController = {
   index: {
+    plugins:{
+      hacli: {
+        permissions: [ "ADMIN" ]
+      }
+    },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       console.log(loggedInUser);

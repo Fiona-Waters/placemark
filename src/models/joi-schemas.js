@@ -5,6 +5,7 @@ export const UserSpec = {
   lastName: Joi.string().required(),
   email: Joi.string().email().required(),
   password: Joi.string().required(),
+  permission: Joi.string(),
 };
 
 export const UserCredentialsSpec = {
