@@ -7,6 +7,7 @@ const spotSchema = new Schema({
     lat: Number,
     lng: Number,
     description: String,
+    category: String,
     craftid: {
         type: Schema.Types.ObjectId,
         ref: "Craft",

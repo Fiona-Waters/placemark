@@ -28,6 +28,7 @@ export const SpotSpec = Joi.object()
     lat: Joi.number().example(22.22).required(),
     lng: Joi.number().example(-12.32).required(),
     description: Joi.string().example("A lovely shop").required(),
+    category: Joi.string().example("Shop").required(),
     craftid: IdSpec,
 })
 .label("Spot");

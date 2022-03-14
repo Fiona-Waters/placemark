@@ -28,7 +28,8 @@ export const craftController = {
         placeName: request.payload.placeName,
         lat: Number(request.payload.lat),
         lng: Number(request.payload.lng),
-        description: request.payload.description
+        description: request.payload.description,
+        category: request.payload.category,
       };
       await db.spotStore.addSpot(craft._id, newSpot);
       return h.redirect(`/craft/${craft._id}`);
