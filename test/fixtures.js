@@ -70,3 +70,5 @@ export const testSpots = [
         description: "This is not only a yarn shop but sells lots of other craft supplies too!"
     }
 ];
+
+export const serviceUrl = "http://localhost:3000";

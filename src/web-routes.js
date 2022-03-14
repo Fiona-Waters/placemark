@@ -24,6 +24,8 @@ export const webRoutes = [
   { method: "GET", path: "/craft/{id}/deletespot/{spotid}", config: craftController.deleteSpot },
 
   { method: "GET", path: "/my-account", config: accountsController.showUserDetails },
-  { method: "POST", path: "/updateuserdetails", config: accountsController.updateUserDetails}
+  { method: "POST", path: "/updateuserdetails", config: accountsController.updateUserDetails},
+
+  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 
 ];

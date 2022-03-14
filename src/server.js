@@ -7,10 +7,14 @@ import * as hacli from "@antoniogiordano/hacli";
 import Handlebars from "handlebars";
 import path from "path";
 import Joi from "joi";
+import hapiSwagger from "hapi-swagger";
+import Inert from "@hapi/inert"
 import { fileURLToPath } from "url";
 import { webRoutes } from "./web-routes.js";
+import { apiRoutes } from "./api-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
+
 
 const result = dotenv.config();
 if (result.error) {
@@ -21,6 +25,12 @@ if (result.error) {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const swaggerOptions = {
+  info: {
+    title: "CraftSpot API",
+    version: "0.1",
+  },
+};
 
 async function init() {
   const server = Hapi.server({
@@ -29,7 +39,7 @@ async function init() {
   });
   await server.register(Vision);
   await server.register(Cookie);
-  
+  await server.register(Inert);
   await server.register(
     {
       plugin:hacli, 
@@ -43,6 +53,14 @@ async function init() {
       403: { message: "Sorry, you do not have access to this area" },
     }
   };
+  await server.register([
+    Inert,
+    Vision,
+    {
+      plugin: hapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
   server.validator(Joi);
   server.auth.strategy("session", "cookie", {
     cookie: {
@@ -67,6 +85,7 @@ async function init() {
   });
   db.init("mongo");
   server.route(webRoutes);
+  server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
 }

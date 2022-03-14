@@ -3,7 +3,7 @@ import { spotMongoStore } from "./spot-mongo-store.js";
 
 export const craftMongoStore = {
     async getAllCrafts() {
-        const crafts = await Craft.find().lean;
+        const crafts = await Craft.find().lean();
         return crafts;
     },
 
