@@ -1,5 +1,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
+import { IdSpec, CraftArraySpec, CraftSpec, CraftSpecPlus } from "../models/joi-schemas.js";
+import { validationError } from "./logger.js"
 
 export const craftApi = {
     find: {
@@ -12,6 +14,10 @@ export const craftApi = {
                 return Boom.serverUnavailable("Database Error");
             }
         },
+        tags: ["api"],
+        response: { schema: CraftArraySpec, failAction: validationError },
+        description: "Get all crafts",
+        notes: "Returns all crafts",
     },
 
     findOne: {
@@ -27,6 +33,11 @@ export const craftApi = {
                 return Boom.serverUnavailable("No Craft with this id");
             }
         },
+        tags: ["api"],
+        description: "Find a Craft",
+        notes: "Returns a craft",
+        validate: { params: { id: IdSpec }, failAction: validationError },
+        response: { schema: CraftSpecPlus, failAction: validationError },
     },
 
     create: {
@@ -43,6 +54,11 @@ export const craftApi = {
                 return Boom.serverUnavailable("Database error");
             }
         },
+        tags: ["api"],
+        description: "Create a Craft",
+        notes: "Returns the newly created craft",
+        validate: { payload: CraftSpec, failAction: validationError },
+        response: { schema: CraftSpecPlus, failAction: validationError },
     },
 
     deleteOne: {
@@ -59,6 +75,9 @@ export const craftApi = {
                 return Boom.serverUnavailable("No Craft with this id");
             }
         },
+        tags: ["api"],
+        description: "Delete a craft",
+        validate: { params: { id: IdSpec }, failAction: validationError },
     },
 
     deleteAll: {
@@ -71,5 +90,7 @@ export const craftApi = {
                 return Boom.serverUnavailable("Database Error");
             }
         },
+        tags: ["api"],
+        description: "Delete all CraftApi",
     },
 };

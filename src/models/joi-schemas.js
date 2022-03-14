@@ -1,25 +1,55 @@
 import Joi from "joi";
 
-export const UserSpec = {
-  firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-  permission: Joi.string(),
-};
+export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
 
-export const UserCredentialsSpec = {
-  email: Joi.string().email().required(),
-  password: Joi.string().required(),
-};
+export const UserCredentialsSpec = Joi.object()
+  .keys({
+    email: Joi.string().email().example("donald@duck.com").required(),
+    password: Joi.string().example("secret").required(),
+    permission: Joi.string().example("ADMIN"),
+  })
+  .label("UserCredentials");
 
-export const SpotSpec = {
-  placeName: Joi.string().required(),
-  lat: Joi.number().required(),
-  lng: Joi.number().required(),
-  description: Joi.string().required(),
-};
+export const UserSpec = UserCredentialsSpec.keys({
+  firstName: Joi.string().example("Donald").required(),
+  lastName: Joi.string().example("Duck").required(),
+}).label("UserDetails");
 
-export const CraftSpec = {
-  title: Joi.string().required(),
-};
+export const UserSpecPlus = UserSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("UserDetailsPlus");
+
+export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
+
+export const SpotSpec = Joi.object()
+  .keys({
+    placeName: Joi.string().example("Winnies").required(),
+    lat: Joi.number().example(22.22).required(),
+    lng: Joi.number().example(-12.32).required(),
+    description: Joi.string().example("A lovely shop").required(),
+    craftid: IdSpec,
+})
+.label("Spot");
+
+export const SpotSpecPlus = SpotSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("SpotPlus");
+
+export const SpotSpecArray = Joi.array().items(SpotSpecPlus).label("SpotArray");
+
+export const CraftSpec = Joi.object()
+  .keys({
+    title: Joi.string().required().example("Knitting"),
+    userid: IdSpec,
+    spots: SpotSpecArray,
+  })
+  .label("Craft");
+
+export const CraftSpecPlus = CraftSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("CraftPlus");
+
+export const CraftArraySpec = Joi.array().items(CraftSpecPlus).label("CraftArray");

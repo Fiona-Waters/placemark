@@ -11,7 +11,7 @@ export const spotMongoStore = {
         spot.craftid = craftId;
         const newSpot = new Spot(spot);
         const spotObj = await newSpot.save();
-        return this.getSpotsByCraftId(spotObj._id);
+        return this.getSpotById(spotObj._id);
     },
 
     async getSpotsByCraftId(id) {

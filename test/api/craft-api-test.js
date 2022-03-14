@@ -42,11 +42,11 @@ suite("Craft API Tests", () => {
             // eslint-disable-next-line no-await-in-loop
             await craftspotService.createCraft(testCrafts[i]);
         }
-        let returnedCrafts = await craftspotService.getAllCrafts();
-        assert.equal(returnedCrafts.length, testCrafts.length);
+        let craftList = await craftspotService.getAllCrafts();
+        assert.equal(craftList.length, testCrafts.length);
         await craftspotService.deleteAllCrafts();
-        returnedCrafts = await craftspotService.getAllCrafts();
-        assert.equal(returnedCrafts.length, 0);
+        craftList = await craftspotService.getAllCrafts();
+        assert.equal(craftList.length, 0);
     });
 
     test("Remove Non-Existant Craft", async () => {

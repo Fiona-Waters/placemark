@@ -3,12 +3,14 @@ import { craftspotService } from "./craftspot-service.js";
 import { assertSubset } from "../test-utils.js";
 import { donald, testUsers } from "../fixtures.js";
 
+const users = new Array(testUsers.length);
+
 suite("User API Tests", () => {
     setup(async () => {
     await craftspotService.deleteAllUsers();
     for (let i = 0; i < testUsers.length; i += 1) {
         // eslint-disable-next-line no-await-in-loop
-        testUsers[0] = await craftspotService.createUser(testUsers[i]);
+        users[0] = await craftspotService.createUser(testUsers[i]);
         }
     });
 
@@ -30,8 +32,8 @@ suite("User API Tests", () => {
     });
 
     test("get a user - success", async () => {
-        const returnedUser = await craftspotService.getUser(testUsers[0]._id);
-        assert.deepEqual(testUsers[0], returnedUser);
+        const returnedUser = await craftspotService.getUser(users[0]._id);
+        assert.deepEqual(users[0], returnedUser);
     });
 
     test("get a user - fail", async () => {
@@ -47,7 +49,7 @@ suite("User API Tests", () => {
     test("get a user - deleted user", async () => {
         await craftspotService.deleteAllUsers();
         try {
-            const returnedUser = await craftspotService.getUser(testUsers[0]._id);
+            const returnedUser = await craftspotService.getUser(users[0]._id);
             assert.fail("Should not return a response");
         } catch (error) {
             assert(error.response.data.message === "No User with this id");
