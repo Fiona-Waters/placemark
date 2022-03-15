@@ -9,7 +9,6 @@ export const adminController = {
     },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      console.log(loggedInUser);
       const users = await db.userStore.getAllUsers();
       const viewData = {
         title: "CraftSpot Admin Dashboard",

@@ -3,7 +3,6 @@ export const donald = {
     lastName: "Duck",
     email: "donald@duck.com",
     password: "secret",
-    permission: "ADMIN",
   };
 
 export const testUsers = [
@@ -12,6 +11,7 @@ export const testUsers = [
       lastName: "Simpson",
       email: "homer@simpson.com",
       password: "secret",
+      permission: "ADMIN",
     },
     {
       firstName: "Marge",
@@ -48,6 +48,7 @@ export const oneSpot = {
     lat: 22.23,
     lng: -7.12,
     description: "A very lovely shop and cafe",
+    category: "Shop",
 };
 
 export const testSpots = [
@@ -55,19 +56,22 @@ export const testSpots = [
         placeName: "The Constant Knitter",
         lat: 12.12,
         lng: -4.13,
-        description: "This shop sells all sorts of yarn and has a fab meeting room upstairs where they hold knit nights"
+        description: "This shop sells all sorts of yarn and has a fab meeting room upstairs where they hold knit nights",
+        category: "Shop",
     },
     {
         placeName: "The Knitting Room",
         lat: 45.12,
         lng: -6.65,
-        description: "Such a lovely yarn shop, and the owner is so nice and helpful"
+        description: "Such a lovely yarn shop, and the owner is so nice and helpful",
+        category: "Shop",
     },
     {
         placeName: "Cahills Tramore",
         lat: 23.32,
         lng: -4.12,
-        description: "This is not only a yarn shop but sells lots of other craft supplies too!"
+        description: "This is not only a yarn shop but sells lots of other craft supplies too!",
+        category: "Shop",
     }
 ];
 
