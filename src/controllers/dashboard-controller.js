@@ -5,8 +5,8 @@ export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      console.log(loggedInUser);
       const crafts = await db.craftStore.getUserCrafts(loggedInUser._id);
+      crafts.sort((a, b) => (a.title > b.title ? 1 : -1));
       const viewData = {
         title: "CraftSpot Dashboard",
         user: loggedInUser,
