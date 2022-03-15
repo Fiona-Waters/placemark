@@ -49,6 +49,7 @@ export const spotJsonStore = {
     spot.lat = updatedSpot.lat;
     spot.lng = updatedSpot.lng;
     spot.description = updatedSpot.description;
+    spot.category = updatedSpot.category;
     await db.write();
   },
 };

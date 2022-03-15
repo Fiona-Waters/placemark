@@ -5,6 +5,7 @@
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Description</th>
+      <th>Category</th>
       <th>Delete Spot</th>
     </tr>
   </thead>
@@ -22,6 +23,9 @@
         </td>
         <td>
           {{description}}
+        </td>
+        <td>
+          {{category}}
         </td>
         <td>
           <a href="/craft/{{../craft._id}}/deletespot/{{_id}}" class="ui icon button">
