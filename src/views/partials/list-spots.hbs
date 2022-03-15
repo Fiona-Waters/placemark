@@ -6,6 +6,7 @@
       <th>Longitude</th>
       <th>Description</th>
       <th>Category</th>
+      <th>Edit Spot</th>
       <th>Delete Spot</th>
     </tr>
   </thead>
@@ -26,6 +27,10 @@
         </td>
         <td>
           {{category}}
+        </td>
+        <td>
+          <a href="/craft/{{../craft._id}}/spot/{{_id}}" class="ui icon button">
+            <i class="fa-solid fa-pencil"></i>
         </td>
         <td>
           <a href="/craft/{{../craft._id}}/deletespot/{{_id}}" class="ui icon button">

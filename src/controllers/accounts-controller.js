@@ -90,7 +90,6 @@ export const accountsController = {
       user.email = request.payload.email;
       user.password = request.payload.password;
       await db.userStore.save();
-      console.log(user);
       return h.view("login-view");
     },
   },

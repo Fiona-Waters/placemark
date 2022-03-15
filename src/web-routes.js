@@ -3,6 +3,7 @@ import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { craftController } from "./controllers/craft-controller.js";
 import { adminController } from "./controllers/admin-controller.js";
+import { spotController } from "./controllers/spot-controller.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
@@ -21,6 +22,9 @@ export const webRoutes = [
   { method: "POST", path: "/craft/{id}/addspot", config: craftController.addSpot },
   { method: "GET", path: "/dashboard/deletecraft/{id}", config: dashboardController.deleteCraft },
   { method: "GET", path: "/craft/{id}/deletespot/{spotid}", config: craftController.deleteSpot },
+
+  { method: "GET", path: "/craft/{id}/spot/{spotid}", config: spotController.showSpotDetails },
+  { method: "POST", path: "/craft/{id}/spot/{spotid}", config: spotController.update },
 
   { method: "GET", path: "/my-account", config: accountsController.showUserDetails },
   { method: "POST", path: "/updateuserdetails", config: accountsController.updateUserDetails},
