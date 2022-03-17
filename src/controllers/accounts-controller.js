@@ -1,6 +1,5 @@
 import { db } from "../models/db.js";
-import { UserSpec, UserCredentialsSpec } from "../models/joi-schemas.js";
-
+import { UserSpec, UserSpecPlus, UserCredentialsSpec } from "../models/joi-schemas.js";
 
 export const accountsController = {
   index: {
@@ -82,24 +81,35 @@ export const accountsController = {
   },
 
   updateUserDetails: {
+    validate: {
+      payload: UserSpecPlus,
+      options: { abortEarly: false },
+      failAction: function (request, h, error) {
+        return h.view("my-account-view", { title: "Error", errors: error.details }).takeover.code(400);
+      },
+    },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const user = await db.userStore.getUserById(loggedInUser._id);
-      user.firstName = request.payload.firstName;
-      user.lastName = request.payload.lastName;
-      user.email = request.payload.email;
-      user.password = request.payload.password;
-      await db.userStore.save();
+      const updatedUser = {
+        firstName: request.payload.firstName,
+        lastName: request.payload.lastName,
+        email: request.payload.email,
+        password: request.payload.password,
+      };
+      try {
+        await db.userStore.updateUser(loggedInUser._id, updatedUser);
+      } catch (error) {
+        console.log(error);
+      }
       return h.view("login-view");
     },
   },
 
   async validate(request, session) {
-    const user = await db.userStore.getUserById(session.id); 
+    const user = await db.userStore.getUserById(session.id);
     if (!user) {
       return { valid: false };
     }
     return { valid: true, credentials: user, permissions: user.permission };
   },
 };
-
