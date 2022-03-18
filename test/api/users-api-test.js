@@ -1,7 +1,8 @@
 import { assert } from "chai";
 import { craftspotService } from "./craftspot-service.js";
 import { assertSubset } from "../test-utils.js";
-import { donald, testUsers } from "../fixtures.js";
+import { donald, oneCraft, oneSpot, testUsers } from "../fixtures.js";
+import { craftApi } from "../../src/api/craft-api.js";
 
 const users = new Array(testUsers.length);
 
@@ -56,4 +57,17 @@ suite("User API Tests", () => {
             assert.equal(error.response.data.statusCode, 404);
         }
     });
+
+    test("delete a user account", async () => {
+        const user = await craftspotService.createUser(donald);
+        const deletedUser = await craftspotService.deleteUser(user._id);
+        try{
+            const returnedUser = await craftspotService.getUser(user._id);
+            assert.fail("Should not return a response");
+        } catch (error) {
+            assert(error.response.data.message === "No User with this id");
+            assert.equal(error.response.data.statusCode, 404);
+        }
+    });
 });
+

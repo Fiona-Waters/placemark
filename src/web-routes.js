@@ -27,7 +27,8 @@ export const webRoutes = [
   { method: "POST", path: "/craft/{id}/spot/{spotid}", config: spotController.update },
 
   { method: "GET", path: "/my-account", config: accountsController.showUserDetails },
-  { method: "POST", path: "/updateuserdetails", config: accountsController.updateUserDetails},
+  { method: "POST", path: "/updateuserdetails", config: accountsController.updateUserDetails },
+  { method: "GET", path: "/deletemyaccount", config: accountsController.deleteMyAccount },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 
