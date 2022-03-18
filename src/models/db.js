@@ -11,6 +11,7 @@ import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { craftMongoStore } from "./mongo/craft-mongo-store.js";
 import { spotMongoStore } from "./mongo/spot-mongo-store.js";
 
+
 export const db = {
   userStore: null,
   craftStore: null,
