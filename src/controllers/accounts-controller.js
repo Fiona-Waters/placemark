@@ -112,4 +112,26 @@ export const accountsController = {
     }
     return { valid: true, credentials: user, permissions: user.permission };
   },
+
+  deleteMyAccount: {
+    handler: async function(request, h) {
+      const loggedInUser = request.auth.credentials;
+      let userCrafts = [];
+      userCrafts = await db.craftStore.getUserCrafts(loggedInUser._id);
+      for (let i = 0; i < userCrafts.length; i += 1) {
+        let userSpots = [];
+        // eslint-disable-next-line no-await-in-loop
+        userSpots = await db.spotStore.getSpotsByCraftId(userCrafts[i]._id);
+        for (let j = 0; j < userSpots.length; j += 1) {
+          // eslint-disable-next-line no-await-in-loop
+          await db.spotStore.deleteSpot(userSpots[j]._id);
+        }
+        // eslint-disable-next-line no-await-in-loop
+        await db.craftStore.deleteCraftById(userCrafts[i]._id);
+      }
+      await db.userStore.deleteUserById(loggedInUser._id);
+      return h.redirect("/");
+    },
+  }
+
 };

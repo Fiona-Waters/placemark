@@ -74,4 +74,24 @@ export const userApi = {
     description: "Delete all userApi",
     notes: "All userApi removed",
   },
+
+  deleteOne: {
+    auth: false,
+    handler: async function (request, h) {
+      try {
+        const user = await db.userStore.getUserById(request.params.id);
+        console.log("userapi", user)
+        if(!user) {
+          return Boom.notFound("No User with this id");
+        }
+        await db.userStore.deleteUserById(user._id);
+        return h.response().code(204);
+      } catch (err) {
+        return Boom.serverUnavailable("No User with this id");
+      }
+    },
+    tags: ["api"],
+    description: "Delete one user",
+    notes: "Removes one user"
+  }
 };
