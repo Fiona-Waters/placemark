@@ -1,9 +1,10 @@
-<table class="table is-fullwidth is-striped has-background-success-light">
+<table class="table is-fullwidth is-striped has-background-warning-light">
   <thead>
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
+      <th>Permission Level</th>
       <th>Delete User</th>
     </tr>
   </thead>
@@ -18,6 +19,9 @@
         </td>
         <td>
             {{email}}
+        </td>
+        <td>
+          {{permission}}
         </td>
         <td>
           <a href="/admin-dashboard/deleteuser/{{_id}}" class="button">
