@@ -19,15 +19,13 @@ suite("Spot Model tests", () => {
   });
 
   test("create a spot", async () => {
-    const craftList = await db.craftStore.addCraft(oneCraft);
-    const spot = await db.spotStore.addSpot(craftList._id, oneSpot)
+    const craft = await db.craftStore.getAllCrafts();
+    const spot = await db.spotStore.addSpot(craft[0]._id, oneSpot)
     assert.isNotNull(spot._id);
     assertSubset (oneSpot, spot);
   });
 
   test("delete all spots", async () => {
-    const spots = await db.spotStore.getAllSpots();
-    assert.equal(testSpots.length, spots.length);
     await db.spotStore.deleteAllSpots();
     const newSpots = await db.spotStore.getAllSpots();
     assert.equal(0, newSpots.length);

@@ -21,10 +21,9 @@ suite("Craft Model tests", () => {
   });
 
   test("delete all crafts", async () => {
-    let returnedCrafts = await db.craftStore.getAllCrafts();
-    assert.equal(returnedCrafts.length, 3);
+    const crafts = await db.craftStore.getAllCrafts();
     await db.craftStore.deleteAllCrafts();
-    returnedCrafts = await db.craftStore.getAllCrafts();
+    const returnedCrafts = await db.craftStore.getAllCrafts();
     assert.equal(returnedCrafts.length, 0);
   });
 
