@@ -38,6 +38,12 @@ export const dashboardController = {
   deleteCraft: {
     handler: async function (request, h) {
       const craft = await db.craftStore.getCraftById(request.params.id);
+      let craftSpots = []
+      craftSpots = await db.spotStore.getSpotsByCraftId(craft._id);
+      for (let i = 0; i < craftSpots.length; i += 1){
+      // eslint-disable-next-line no-await-in-loop
+      await db.spotStore.deleteSpot(craftSpots[i]);
+      }
       await db.craftStore.deleteCraftById(craft._id);
       return h.redirect("/dashboard");
     }

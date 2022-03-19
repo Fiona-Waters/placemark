@@ -8,10 +8,10 @@ const users = new Array(testUsers.length);
 
 suite("User API Tests", () => {
     setup(async () => {
-    await craftspotService.deleteAllUsers();
-    for (let i = 0; i < testUsers.length; i += 1) {
-        // eslint-disable-next-line no-await-in-loop
-        users[0] = await craftspotService.createUser(testUsers[i]);
+        await craftspotService.deleteAllUsers();
+        for (let i = 0; i < testUsers.length; i += 1) {
+            // eslint-disable-next-line no-await-in-loop
+            users[0] = await craftspotService.createUser(testUsers[i]);
         }
     });
 
