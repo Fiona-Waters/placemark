@@ -10,10 +10,12 @@ import Joi from "joi";
 import hapiSwagger from "hapi-swagger";
 import Inert from "@hapi/inert"
 import { fileURLToPath } from "url";
+import jwt from "hapi-auth-jwt2";
 import { webRoutes } from "./web-routes.js";
 import { apiRoutes } from "./api-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
+import { validate } from "./api/jwt-utils.js";
 
 
 const result = dotenv.config();
@@ -30,6 +32,14 @@ const swaggerOptions = {
     title: "CraftSpot API",
     version: "0.1",
   },
+  securityDefinitions: {
+    jwt: {
+      type: "apiKey",
+      name: "Authorization",
+      in: "header"
+    }
+  },
+  security: [{ jwt: [] }]
 };
 
 async function init() {
@@ -70,6 +80,12 @@ async function init() {
     },
     redirectTo: "/",
     validateFunc: accountsController.validate,
+  });
+  await server.register(jwt);
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.cookie_password,
+    validate: validate,
+    verifyOptions: { algorithms: ["HS256"] }
   });
   server.auth.default("session");
   server.views({

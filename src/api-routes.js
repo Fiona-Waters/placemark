@@ -8,6 +8,7 @@ export const apiRoutes = [
   { method: "DELETE", path: "/api/users", config: userApi.deleteAll },
   { method: "GET", path: "/api/users/{id}", config: userApi.findOne },
   { method: "DELETE", path: "/api/users/{id}", config: userApi.deleteOne },
+  { method: "POST", path: "/api/users/authenticate", config: userApi.authenticate },
 
   { method: "POST", path: "/api/crafts", config: craftApi.create },
   { method: "DELETE", path: "/api/crafts", config: craftApi.deleteAll },
@@ -20,4 +21,5 @@ export const apiRoutes = [
   { method: "POST", path: "/api/crafts/{id}/spots", config: spotApi.create },
   { method: "DELETE", path: "/api/spots", config: spotApi.deleteAll },
   { method: "DELETE", path: "/api/spots/{id}", config: spotApi.deleteOne },
+
 ];

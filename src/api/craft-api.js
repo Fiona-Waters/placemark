@@ -5,7 +5,9 @@ import { validationError } from "./logger.js"
 
 export const craftApi = {
     find: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+          },
         handler: async function (request, h) {
             try {
                 const crafts = await db.craftStore.getAllCrafts();
@@ -21,7 +23,9 @@ export const craftApi = {
     },
 
     findOne: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+          },
         async handler(request) {
             try {
                 const craft = await db.craftStore.getCraftById(request.params.id);
@@ -41,7 +45,9 @@ export const craftApi = {
     },
 
     create: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+          },
         handler: async function (request, h) {
             try {
                 const craft = request.payload;
@@ -62,7 +68,9 @@ export const craftApi = {
     },
 
     deleteOne: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+          },
         handler: async function (request, h) {
             try {
                 const craft = await db.craftStore.getCraftById(request.params.id);
@@ -81,7 +89,9 @@ export const craftApi = {
     },
 
     deleteAll: {
-        auth: false,
+        auth: {
+            strategy: "jwt",
+          },
         handler: async function (request, h) {
             try {
                 await db.craftStore.deleteAllCrafts();

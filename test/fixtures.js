@@ -5,6 +5,11 @@ export const donald = {
     password: "secret",
   };
 
+export const donaldCredentials = {
+    email: "donald@duck.com",
+    password: "secret"
+};
+
 export const testUsers = [
     {
       firstName: "Homer",

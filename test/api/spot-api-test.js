@@ -1,17 +1,21 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { craftspotService } from "./craftspot-service.js";
-import { donald, oneCraft, testCrafts, testSpots, oneSpot } from "../fixtures.js";
+import { donald, oneCraft, testCrafts, testSpots, oneSpot, donaldCredentials } from "../fixtures.js";
 
 suite("Spot API Tests", () => {
   let user = null;
   let craftExample = null;
 
   setup(async () => {
-    await craftspotService.deleteAllCrafts();
-    await craftspotService.deleteAllUsers();
-    await craftspotService.deleteAllSpots();
+    craftspotService.clearAuth();
     user = await craftspotService.createUser(donald);
+    await craftspotService.authenticate(donaldCredentials);
+    await craftspotService.deleteAllCrafts();
+    await craftspotService.deleteAllSpots();
+    await craftspotService.deleteAllUsers();
+    user = await craftspotService.createUser(donald);
+    await craftspotService.authenticate(donaldCredentials);
     oneCraft.userid = user._id;
     craftExample = await craftspotService.createCraft(oneCraft);
   });
