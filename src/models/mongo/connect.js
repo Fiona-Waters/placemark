@@ -14,7 +14,7 @@ async function seed() {
 export function connectMongo() {
   dotenv.config();
 
-  Mongoose.connect("process.env.db");
+  Mongoose.connect(process.env.db);
   const db = Mongoose.connection;
 
   db.on("error", (err) => {
