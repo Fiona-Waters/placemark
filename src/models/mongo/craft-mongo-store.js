@@ -39,5 +39,13 @@ export const craftMongoStore = {
 
     async deleteAllCrafts() {
         await Craft.deleteMany({});
-    }
-}
+    },
+
+    async updateCraft(updatedCraft) {
+        const craft = await Craft.findOne({ _id: updatedCraft._id });
+        craft.title = updatedCraft.title;
+        craft.img = updatedCraft.img;
+        craft.imgid = updatedCraft.imgid;
+        await craft.save();
+    },
+};
