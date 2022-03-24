@@ -1,5 +1,6 @@
 import { db } from "../models/db.js";
 import { SpotSpec } from "../models/joi-schemas.js";
+import { imageStore } from "../models/image-store.js";
 
 export const craftController = {
   index: {
@@ -43,4 +44,42 @@ export const craftController = {
           return h.redirect(`/craft/${craft._id}`);
       },
   },
+
+  uploadImage: {
+    handler: async function (request, h) {
+      try {
+        const craft = await db.craftStore.getCraftById(request.params.id);
+        const file = request.payload.imagefile;
+        if (Object.keys(file).length > 0) {
+          const response = await imageStore.uploadImage(request.payload.imagefile);
+          craft.img = response.url;
+          craft.imgid = response.public_id;
+          db.craftStore.updateCraft(craft);
+        }
+        return h.redirect(`/craft/${craft._id}`);
+      } catch (err) {
+        console.log(err);
+        return h.redirect(`/craft/${craft._id}`);
+      }
+    },
+    payload: {
+      multipart: true,
+      output: "data",
+      maxBytes: 209715200,
+      parse: true
+    }
+  },
+
+  deleteImage: {
+    handler: async function (request, h) {
+      const craft = await db.craftStore.getCraftById(request.params.id);
+      await db.imageStore.deleteImage(craft.imgid);
+      craft.img = undefined;
+      craft.imgid = undefined;
+      db.craftStore.updateCraft(craft);
+      return h.redirect(`/craft/${craft._id}`);
+    },
+  },
+
+
 };

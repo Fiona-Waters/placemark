@@ -1,9 +1,17 @@
 {{> menu}}
 
-<section class="section">
-  <div class="title">
-   Your {{craft.title}} Spot List
+<section class="section columns is vcentered">
+  <div class="column is-9 has-text-centered">
+    <div class="title">
+      Your {{craft.title}} Spot List
+    </div>
+    {{> list-spots}}
+    {{> add-spot}}
   </div>
-  {{> list-spots}}
-  {{> add-spot}}
+  <div class="column">
+    <div class="title">
+    {{craft.title}}
+    </div>
+    {{> craft-image }}
+  </div>
 </section>

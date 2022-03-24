@@ -10,12 +10,14 @@ import { connectMongo } from "./mongo/connect.js";
 import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { craftMongoStore } from "./mongo/craft-mongo-store.js";
 import { spotMongoStore } from "./mongo/spot-mongo-store.js";
+import { imageStore } from "./image-store.js";
 
 
 export const db = {
   userStore: null,
   craftStore: null,
   spotStore: null,
+  imageStore: null,
 
   init(storeType) {
     switch (storeType) {
@@ -28,6 +30,7 @@ export const db = {
         this.userStore = userMongoStore;
         this.craftStore = craftMongoStore;
         this.spotStore = spotMongoStore;
+        this.imageStore = imageStore;
         connectMongo();
         break;
       default:
