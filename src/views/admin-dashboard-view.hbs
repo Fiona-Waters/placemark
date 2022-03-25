@@ -3,5 +3,86 @@
 <section class="section">
     <h1 class="title">User List</h1>
    {{> list-user}}
+  
 </section>
+
+<div class="box box-link-hover-shadow has-background-warning-light">
+    <h2 class="title">
+      Application Analytics
+    </h2>
+    <table class="table is-fullwidth is-striped has-background-warning-light">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Users
+            </td>
+            <td>
+                {{users.length}}
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                Crafts
+            </td>
+            <td>
+                {{crafts.length}}
+            </td>
+        </tr>
+        <tr>
+            <td> 
+                Spots
+            </td>
+            <td>
+               {{spots.length}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Average Crafts Per User
+            </td>
+            <td>
+                {{results.averageCraftsPerUser}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Average Spots Per User
+            </td>
+            <td>
+                {{results.averageSpotsPerUser}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Average Spots Per Craft
+            </td>
+            <td>
+                {{results.averageSpotsPerCraft}}
+            </td>
+        </tr>     
+        <tr>
+            <td>
+                Most Crafts
+            </td>
+            <td>
+                {{results.mostCrafts}}
+            </td>
+        </tr> 
+        <tr>
+            <td>
+                Least Crafts 
+            </td>
+            <td>
+                {{results.leastCrafts}}
+            </td>
+        </tr>
+    </tbody>
+  </div>
+
 
