@@ -59,3 +59,4 @@ Helpful online resources used in this project:
 * https://bulma.io/documentation/form/select/ Bulma use of select option for categories drop down menu.
 * https://mongoosejs.com/docs/api.html#query_Query-lean Mongoose lean documentation.
 * https://cloudinary.com/documentation/image_upload_api_reference Accessing cloudinary public_id for use in delete functionality.
+
