@@ -1,3 +1,11 @@
+/**
+ * Craft controller handling all Craft related actions.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { db } from "../models/db.js";
 import { SpotSpec } from "../models/joi-schemas.js";
 import { imageStore } from "../models/image-store.js";
@@ -38,11 +46,11 @@ export const craftController = {
   },
 
   deleteSpot: {
-      handler: async function (request, h) {
-          const craft = await db.craftStore.getCraftById(request.params.id);
-          await db.spotStore.deleteSpot(request.params.spotid);
-          return h.redirect(`/craft/${craft._id}`);
-      },
+    handler: async function (request, h) {
+      const craft = await db.craftStore.getCraftById(request.params.id);
+      await db.spotStore.deleteSpot(request.params.spotid);
+      return h.redirect(`/craft/${craft._id}`);
+    },
   },
 
   uploadImage: {
@@ -66,10 +74,10 @@ export const craftController = {
       multipart: true,
       output: "data",
       maxBytes: 209715200,
-      parse: true
-    }
+      parse: true,
+    },
   },
-
+  // Function allowing deletion of image from app and cloudinary service
   deleteImage: {
     handler: async function (request, h) {
       const craft = await db.craftStore.getCraftById(request.params.id);
@@ -80,6 +88,4 @@ export const craftController = {
       return h.redirect(`/craft/${craft._id}`);
     },
   },
-
-
 };

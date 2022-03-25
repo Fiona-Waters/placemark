@@ -1,3 +1,11 @@
+/**
+ * Data Analytics Functions
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { db } from "../models/db.js";
 
 export const analytics = {

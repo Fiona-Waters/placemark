@@ -1,3 +1,11 @@
+/**
+ * User JSON Store model handling User related data.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { v4 } from "uuid";
 // eslint-disable-next-line import/no-unresolved
 import { JSONFile, Low } from "lowdb";
@@ -45,9 +53,8 @@ export const userJsonStore = {
     db.data.users = [];
     await db.write();
   },
-  
+
   async save() {
     await db.write();
   },
-
 };

@@ -1,3 +1,12 @@
+/**
+ * JWT Utils
+ * Functions to create, decode and validate jsonwebtokens.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { db } from "../models/db.js";

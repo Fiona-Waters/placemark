@@ -1,3 +1,11 @@
+/**
+ * Accounts controller handling all User Accounts related actions.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { db } from "../models/db.js";
 import { UserSpec, UserSpecPlus, UserCredentialsSpec } from "../models/joi-schemas.js";
 
@@ -114,7 +122,7 @@ export const accountsController = {
   },
 
   deleteMyAccount: {
-    handler: async function(request, h) {
+    handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       let userCrafts = [];
       userCrafts = await db.craftStore.getUserCrafts(loggedInUser._id);
@@ -132,6 +140,5 @@ export const accountsController = {
       await db.userStore.deleteUserById(loggedInUser._id);
       return h.redirect("/");
     },
-  }
-
+  },
 };

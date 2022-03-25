@@ -4,7 +4,6 @@ import { donald, testUsers } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("User Model tests", () => {
-
   setup(async () => {
     db.init("mongo");
     await db.userStore.deleteAll();
@@ -16,7 +15,7 @@ suite("User Model tests", () => {
 
   test("create a user", async () => {
     const newUser = await db.userStore.addUser(donald);
-    assertSubset(donald, newUser)
+    assertSubset(donald, newUser);
   });
 
   test("delete all users", async () => {
@@ -36,7 +35,7 @@ suite("User Model tests", () => {
   });
 
   test("delete One User - success", async () => {
-    const users = await db.userStore.getAllUsers()
+    const users = await db.userStore.getAllUsers();
     await db.userStore.deleteUserById(users[0]._id);
     const returnedUsers = await db.userStore.getAllUsers();
     assert.equal(returnedUsers.length, users.length - 1);

@@ -1,3 +1,11 @@
+/**
+ * User Memory Store model handling User related data.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { v4 } from "uuid";
 
 let users = [];

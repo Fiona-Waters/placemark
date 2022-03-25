@@ -1,5 +1,13 @@
+/**
+ * Craft Memory Store model handling Craft related data.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { v4 } from "uuid";
-import { spotMemStore } from "./spot-mem-store.js"
+import { spotMemStore } from "./spot-mem-store.js";
 
 let crafts = [];
 
@@ -17,8 +25,8 @@ export const craftMemStore = {
   async getCraftById(id) {
     const list = crafts.find((craft) => craft._id === id);
     if (list) {
-    list.spots = await spotMemStore.getSpotsByCraftId(list._id);
-    return list;
+      list.spots = await spotMemStore.getSpotsByCraftId(list._id);
+      return list;
     }
     return null;
   },

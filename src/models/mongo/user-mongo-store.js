@@ -1,3 +1,11 @@
+/**
+ * User Mongo Store model handling User related data.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { User } from "./user.js";
 
 export const userMongoStore = {
@@ -39,12 +47,11 @@ export const userMongoStore = {
   },
 
   async updateUser(userid, updatedUser) {
-    const user = await User.findOne({ _id: userid})
+    const user = await User.findOne({ _id: userid });
     user.firstName = updatedUser.firstName;
     user.lastName = updatedUser.lastName;
     user.email = updatedUser.email;
     user.password = updatedUser.password;
     await user.save();
   },
-
 };

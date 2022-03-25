@@ -1,3 +1,11 @@
+/**
+ * Application Joi Schemas
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import Joi from "joi";
 
 export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
@@ -30,8 +38,8 @@ export const SpotSpec = Joi.object()
     description: Joi.string().example("A lovely shop").required(),
     category: Joi.string().example("Shop").required(),
     craftid: IdSpec,
-})
-.label("Spot");
+  })
+  .label("Spot");
 
 export const SpotSpecPlus = SpotSpec.keys({
   _id: IdSpec,

@@ -8,7 +8,7 @@ import Handlebars from "handlebars";
 import path from "path";
 import Joi from "joi";
 import hapiSwagger from "hapi-swagger";
-import Inert from "@hapi/inert"
+import Inert from "@hapi/inert";
 import { fileURLToPath } from "url";
 import jwt from "hapi-auth-jwt2";
 import { webRoutes } from "./web-routes.js";
@@ -17,11 +17,10 @@ import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { validate } from "./api/jwt-utils.js";
 
-
 const result = dotenv.config();
 if (result.error) {
   console.log(result.error.message);
- // process.exit(1);
+  // process.exit(1);
 }
 
 const __filename = fileURLToPath(import.meta.url);
@@ -36,10 +35,10 @@ const swaggerOptions = {
     jwt: {
       type: "apiKey",
       name: "Authorization",
-      in: "header"
-    }
+      in: "header",
+    },
   },
-  security: [{ jwt: [] }]
+  security: [{ jwt: [] }],
 };
 
 async function init() {
@@ -49,18 +48,17 @@ async function init() {
   await server.register(Vision);
   await server.register(Cookie);
   await server.register(Inert);
-  await server.register(
-    {
-      plugin:hacli, 
-      options:{
-		    permissions: [ "ADMIN", "USER" ]
-      }
-    });
+  await server.register({
+    plugin: hacli,
+    options: {
+      permissions: ["ADMIN", "USER"],
+    },
+  });
   await server.register(hapiError);
   const config = {
     statusCodes: {
       403: { message: "Sorry, you do not have access to this area" },
-    }
+    },
   };
   await server.register([
     Inert,
@@ -84,7 +82,7 @@ async function init() {
   server.auth.strategy("jwt", "jwt", {
     key: process.env.cookie_password,
     validate: validate,
-    verifyOptions: { algorithms: ["HS256"] }
+    verifyOptions: { algorithms: ["HS256"] },
   });
   server.auth.default("session");
   server.views({

@@ -1,10 +1,9 @@
 import { assert } from "chai";
-import { db } from "../../src/models/db.js"
+import { db } from "../../src/models/db.js";
 import { testCrafts, oneCraft } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("Craft Model tests", () => {
-
   setup(async () => {
     db.init("mongo");
     await db.craftStore.deleteAllCrafts();

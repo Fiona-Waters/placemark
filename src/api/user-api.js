@@ -1,3 +1,13 @@
+/**
+ * User Api Functions
+ * Each function includes jwt security information, core functionality
+ * and api documentation details.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { UserCredentialsSpec, UserArray, UserSpec, IdSpec, UserSpecPlus, JwtAuth } from "../models/joi-schemas.js";
@@ -89,7 +99,7 @@ export const userApi = {
     handler: async function (request, h) {
       try {
         const user = await db.userStore.getUserById(request.params.id);
-        if(!user) {
+        if (!user) {
           return Boom.notFound("No User with this id");
         }
         await db.userStore.deleteUserById(user._id);
@@ -100,7 +110,7 @@ export const userApi = {
     },
     tags: ["api"],
     description: "Delete one user",
-    notes: "Removes one user"
+    notes: "Removes one user",
   },
 
   authenticate: {
@@ -110,12 +120,12 @@ export const userApi = {
         const user = await db.userStore.getUserByEmail(request.payload.email);
         if (!user) {
           return Boom.unauthorized("User not found");
-        } if (user.password !== request.payload.password) {
+        }
+        if (user.password !== request.payload.password) {
           return Boom.unauthorized("Invalid password");
-        } 
-          const token = createToken(user);
-          return h.response({ success: true, token: token }).code(201);
-        
+        }
+        const token = createToken(user);
+        return h.response({ success: true, token: token }).code(201);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
@@ -124,6 +134,6 @@ export const userApi = {
     description: "Authenticate a User",
     notes: "If user has valid email/password, create and return a JWT token",
     validate: { payload: UserCredentialsSpec, failAction: validationError },
-    response: { schema: JwtAuth, failAction: validationError }
+    response: { schema: JwtAuth, failAction: validationError },
   },
 };

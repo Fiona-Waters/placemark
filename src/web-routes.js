@@ -32,6 +32,5 @@ export const webRoutes = [
   { method: "POST", path: "/updateuserdetails", config: accountsController.updateUserDetails },
   { method: "GET", path: "/deletemyaccount", config: accountsController.deleteMyAccount },
 
-  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
-
+  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
 ];

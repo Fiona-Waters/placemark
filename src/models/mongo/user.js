@@ -1,3 +1,11 @@
+/**
+ * User Mongoose Schema.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import Mongoose from "mongoose";
 import Boom from "@hapi/boom";
 

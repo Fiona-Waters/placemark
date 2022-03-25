@@ -1,3 +1,11 @@
+/**
+ * Spot controller handling all Spot related actions.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { SpotSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 
@@ -32,9 +40,9 @@ export const spotController = {
         category: request.payload.category,
       };
       try {
-      await db.spotStore.updateSpot(request.params.spotid, newSpot); 
+        await db.spotStore.updateSpot(request.params.spotid, newSpot);
       } catch (error) {
-          console.log(error);
+        console.log(error);
       }
       return h.redirect(`/craft/${request.params.id}`);
     },

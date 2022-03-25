@@ -1,3 +1,11 @@
+/**
+ * image-store.js handling cloudinary image functionality
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import * as cloudinary from "cloudinary";
 import { writeFileSync } from "fs";
 import dotenv from "dotenv";
@@ -7,24 +15,23 @@ dotenv.config();
 const credentials = {
   cloud_name: process.env.cloudinary_name,
   api_key: process.env.cloudinary_key,
-  api_secret: process.env.cloudinary_secret
+  api_secret: process.env.cloudinary_secret,
 };
 cloudinary.config(credentials);
 
 export const imageStore = {
-
-  getAllImages: async function() {
+  getAllImages: async function () {
     const result = await cloudinary.v2.api.resources();
     return result.resources;
   },
 
-  uploadImage: async function(imagefile) {
+  uploadImage: async function (imagefile) {
     await writeFileSync("./public/temp.img", imagefile);
     const response = await cloudinary.v2.uploader.upload("./public/temp.img");
     return response;
   },
 
-  deleteImage: async function(img) {
+  deleteImage: async function (img) {
     await cloudinary.v2.uploader.destroy(img, {});
-  }
+  },
 };

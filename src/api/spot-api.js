@@ -1,3 +1,13 @@
+/**
+ * Spot Api Functions
+ * Each function includes jwt security information, core functionality
+ * and api documentation details.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { IdSpec, SpotSpec, SpotSpecPlus, SpotSpecArray } from "../models/joi-schemas.js";

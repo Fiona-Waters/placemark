@@ -1,3 +1,11 @@
+/**
+ * Dashboard controller handling all Dashboard related actions.
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { db } from "../models/db.js";
 import { CraftSpec } from "../models/joi-schemas.js";
 
@@ -38,14 +46,14 @@ export const dashboardController = {
   deleteCraft: {
     handler: async function (request, h) {
       const craft = await db.craftStore.getCraftById(request.params.id);
-      let craftSpots = []
+      let craftSpots = [];
       craftSpots = await db.spotStore.getSpotsByCraftId(craft._id);
-      for (let i = 0; i < craftSpots.length; i += 1){
-      // eslint-disable-next-line no-await-in-loop
-      await db.spotStore.deleteSpot(craftSpots[i]);
+      for (let i = 0; i < craftSpots.length; i += 1) {
+        // eslint-disable-next-line no-await-in-loop
+        await db.spotStore.deleteSpot(craftSpots[i]);
       }
       await db.craftStore.deleteCraftById(craft._id);
       return h.redirect("/dashboard");
-    }
-  }
+    },
+  },
 };

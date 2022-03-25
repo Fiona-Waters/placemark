@@ -1,3 +1,11 @@
+/**
+ * db.js - defining function to intialise database
+ *
+ * @author Fiona Waters
+ * @date 25/03/2022
+ * @version 3
+ */
+
 import { userMemStore } from "./mem/user-mem-store.js";
 import { craftMemStore } from "./mem/craft-mem-store.js";
 import { spotMemStore } from "./mem/spot-mem-store.js";
@@ -11,7 +19,6 @@ import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { craftMongoStore } from "./mongo/craft-mongo-store.js";
 import { spotMongoStore } from "./mongo/spot-mongo-store.js";
 import { imageStore } from "./image-store.js";
-
 
 export const db = {
   userStore: null,
