@@ -29,13 +29,13 @@ export const seedData = {
       },
       craftTwo: {
         title: "Crochet",
-        img: "https://https://res.cloudinary.com/dbtrpapl8/image/upload/v1648157486/eufpbeabgkfdsugpxk0d.jpg",
+        img: "https://res.cloudinary.com/dbtrpapl8/image/upload/v1648157486/eufpbeabgkfdsugpxk0d.jpg",
         imgid: "eufpbeabgkfdsugpxk0d",
         userid: "->users.homer"
       },
       craftThree: {
         title: "Spinning",
-        img: "https://https://res.cloudinary.com/dbtrpapl8/image/upload/v1648157574/fttphzsoflkvtba2rxzh.jpg",
+        img: "https://res.cloudinary.com/dbtrpapl8/image/upload/v1648157574/fttphzsoflkvtba2rxzh.jpg",
         imgid: "fttphzsoflkvtba2rxzh",
         userid: "->users.homer"
       },
