@@ -54,7 +54,7 @@ Possible future additions:
 ## References
 Helpful online resources used in this project:
 
-* https://github.com/antoniogiordano/ - admin authorization (rbac).
+* https://github.com/antoniogiordano/hacli - admin authorization (rbac).
 * https://www.npmjs.com/package/hapi-error?activeTab=readme hapi error plugin.
 * https://bulma.io/documentation/form/select/ Bulma use of select option for categories drop down menu.
 * https://mongoosejs.com/docs/api.html#query_Query-lean Mongoose lean documentation.
