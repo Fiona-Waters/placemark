@@ -53,6 +53,8 @@ export const CraftSpec = Joi.object()
     title: Joi.string().required().example("Knitting"),
     userid: IdSpec,
     spots: SpotSpecArray,
+    img: Joi.string(),
+    imgid: Joi.string()
   })
   .label("Craft");
 

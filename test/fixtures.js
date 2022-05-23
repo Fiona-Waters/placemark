@@ -80,4 +80,4 @@ export const testSpots = [
   },
 ];
 
-export const serviceUrl = "http://localhost:3000";
+export const serviceUrl = "http://localhost:4000";
