@@ -32,6 +32,24 @@ export const craftApi = {
     notes: "Returns all crafts",
   },
 
+  findByUserId: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const crafts = await db.craftStore.getUserCrafts(request.auth.credentials._id);
+        return crafts;
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    response: { schema: CraftArraySpec, failAction: validationError },
+    description: "Get all crafts",
+    notes: "Returns all crafts",
+  },
+
   findOne: {
     auth: {
       strategy: "jwt",
@@ -61,6 +79,7 @@ export const craftApi = {
     handler: async function (request, h) {
       try {
         const craft = request.payload;
+        craft.userid = request.auth.credentials._id;
         const newCraft = await db.craftStore.addCraft(craft);
         if (newCraft) {
           return h.response(newCraft).code(201);

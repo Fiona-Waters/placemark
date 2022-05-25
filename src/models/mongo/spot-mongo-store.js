@@ -30,6 +30,7 @@ export const spotMongoStore = {
   async getSpotById(id) {
     if (id) {
       const spot = await Spot.findOne({ _id: id }).lean();
+      
       return spot;
     }
     return null;
@@ -55,5 +56,7 @@ export const spotMongoStore = {
     spot.description = updatedSpot.description;
     spot.category = updatedSpot.category;
     await spot.save();
+    const savedSpot = await Spot.findOne({ _id: spotid }).lean();
+    return savedSpot;
   },
 };

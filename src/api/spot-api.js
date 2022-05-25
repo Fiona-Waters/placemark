@@ -54,6 +54,27 @@ export const spotApi = {
     response: { schema: SpotSpecPlus, failAction: validationError },
   },
 
+  findSpotsByCraftId: {
+    auth: {
+      strategy: "jwt",
+    },
+    async handler(request) {
+      try {
+        const spot = await db.spotStore.getSpotsByCraftId(request.params.id);
+        if (!spot) {
+          return Boom.notFound("No spot with this id");
+        }
+        return spot;
+      } catch (err) {
+        return Boom.serverUnavailable("No spot with this id");
+      }
+    },
+    tags: ["api"],
+    description: "Find a Spot",
+    notes: "Returns a spot",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: SpotSpecArray, failAction: validationError },
+  },
   create: {
     auth: {
       strategy: "jwt",
@@ -73,6 +94,28 @@ export const spotApi = {
     description: "Create a Spot",
     notes: "Returns the newly created spot",
     validate: { payload: SpotSpec },
+    response: { schema: SpotSpecPlus, failAction: validationError },
+  },
+  updateSpot: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const spot = await db.spotStore.updateSpot(request.params.spotid, request.payload);
+        if (spot) {
+          return h.response(spot).code(201);
+        }
+        return Boom.badImplementation("error creating spot");
+      } catch (err) {
+        console.log(err);
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    description: "Update a Spot",
+    notes: "Returns the updated spot",
+    validate: { payload: SpotSpecPlus },
     response: { schema: SpotSpecPlus, failAction: validationError },
   },
 

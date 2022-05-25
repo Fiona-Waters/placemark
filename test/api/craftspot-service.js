@@ -20,9 +20,7 @@ export const craftspotService = {
   },
 
   async deleteUser(id) {
-    console.log("Hello1");
     const res = await axios.delete(`${this.craftspotUrl}/api/users/${id}`);
-    console.log("hello2");
     return res.data;
   },
 

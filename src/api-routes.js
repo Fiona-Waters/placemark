@@ -13,12 +13,15 @@ export const apiRoutes = [
   { method: "POST", path: "/api/crafts", config: craftApi.create },
   { method: "DELETE", path: "/api/crafts", config: craftApi.deleteAll },
   { method: "GET", path: "/api/crafts", config: craftApi.find },
+  { method: "GET", path: "/api/crafts/usercrafts", config: craftApi.findByUserId },
   { method: "GET", path: "/api/crafts/{id}", config: craftApi.findOne },
   { method: "DELETE", path: "/api/crafts/{id}", config: craftApi.deleteOne },
 
   { method: "GET", path: "/api/spots", config: spotApi.find },
   { method: "GET", path: "/api/spots/{id}", config: spotApi.findOne },
+  { method: "GET",path: "/api/crafts/{id}/spots", config: spotApi.findSpotsByCraftId },
   { method: "POST", path: "/api/crafts/{id}/spots", config: spotApi.create },
+  { method: "POST", path: "/api/crafts/{id}/spots/{spotid}", config: spotApi.updateSpot},
   { method: "DELETE", path: "/api/spots", config: spotApi.deleteAll },
   { method: "DELETE", path: "/api/spots/{id}", config: spotApi.deleteOne },
 ];
