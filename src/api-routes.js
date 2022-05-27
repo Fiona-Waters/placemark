@@ -1,6 +1,7 @@
 import { craftApi } from "./api/craft-api.js";
 import { userApi } from "./api/user-api.js";
 import { spotApi } from "./api/spot-api.js";
+import { analyticsApi } from "./api/analytics-api.js";
 
 export const apiRoutes = [
   { method: "GET", path: "/api/users", config: userApi.find },
@@ -9,6 +10,8 @@ export const apiRoutes = [
   { method: "GET", path: "/api/users/{id}", config: userApi.findOne },
   { method: "DELETE", path: "/api/users/{id}", config: userApi.deleteOne },
   { method: "POST", path: "/api/users/authenticate", config: userApi.authenticate },
+  { method: "GET", path: "/api/users/loggedInUser", config: userApi.getLoggedInUser },
+  { method: "POST", path: "/api/users/updateUser/{id}", config: userApi.updateUser},
 
   { method: "POST", path: "/api/crafts", config: craftApi.create },
   { method: "DELETE", path: "/api/crafts", config: craftApi.deleteAll },
@@ -24,4 +27,6 @@ export const apiRoutes = [
   { method: "POST", path: "/api/crafts/{id}/spots/{spotid}", config: spotApi.updateSpot},
   { method: "DELETE", path: "/api/spots", config: spotApi.deleteAll },
   { method: "DELETE", path: "/api/spots/{id}", config: spotApi.deleteOne },
+
+  { method: "GET", path: "/api/analytics", config: analyticsApi.calculate }
 ];

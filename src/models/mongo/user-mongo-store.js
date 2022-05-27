@@ -53,5 +53,7 @@ export const userMongoStore = {
     user.email = updatedUser.email;
     user.password = updatedUser.password;
     await user.save();
+    const savedUser = await User.findOne({ "_id": userid}).lean();
+    return savedUser;
   },
 };
