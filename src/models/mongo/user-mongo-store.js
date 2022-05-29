@@ -5,8 +5,11 @@
  * @date 25/03/2022
  * @version 3
  */
-
+import bcrypt from "bcrypt";
+import sanitizeHtml from "sanitize-html";
 import { User } from "./user.js";
+
+const saltRounds = 10;
 
 export const userMongoStore = {
   async getAllUsers() {
@@ -48,10 +51,10 @@ export const userMongoStore = {
 
   async updateUser(userid, updatedUser) {
     const user = await User.findOne({ _id: userid });
-    user.firstName = updatedUser.firstName;
-    user.lastName = updatedUser.lastName;
-    user.email = updatedUser.email;
-    user.password = updatedUser.password;
+    user.firstName = sanitizeHtml(updatedUser.firstName);
+    user.lastName = sanitizeHtml(updatedUser.lastName);
+    user.email = sanitizeHtml(updatedUser.email);
+    user.password = await bcrypt.hash(updatedUser.password, saltRounds);
     await user.save();
     const savedUser = await User.findOne({ "_id": userid}).lean();
     return savedUser;

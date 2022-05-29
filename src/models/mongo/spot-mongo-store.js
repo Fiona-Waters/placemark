@@ -6,8 +6,10 @@
  * @version 3
  */
 
+import sanitizeHtml from "sanitize-html";
 import { spotMemStore } from "../mem/spot-mem-store.js";
 import { Spot } from "./spot.js";
+
 
 export const spotMongoStore = {
   async getAllSpots() {
@@ -50,10 +52,10 @@ export const spotMongoStore = {
 
   async updateSpot(spotid, updatedSpot) {
     const spot = await Spot.findOne({ _id: spotid });
-    spot.placeName = updatedSpot.placeName;
-    spot.lat = updatedSpot.lat;
-    spot.lng = updatedSpot.lng;
-    spot.description = updatedSpot.description;
+    spot.placeName = sanitizeHtml(updatedSpot.placeName);
+    spot.lat = sanitizeHtml(updatedSpot.lat);
+    spot.lng = sanitizeHtml(updatedSpot.lng);
+    spot.description = sanitizeHtml(updatedSpot.description);
     spot.category = updatedSpot.category;
     await spot.save();
     const savedSpot = await Spot.findOne({ _id: spotid }).lean();

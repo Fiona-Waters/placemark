@@ -37,6 +37,7 @@
     "@hapi/hapi": "^20.2.1",
     "@hapi/inert": "^6.0.5",
     "@hapi/vision": "^6.1.0",
+    "bcrypt": "^5.0.1",
     "cloudinary": "^1.29.0",
     "dotenv": "^16.0.0",
     "handlebars": "^4.7.7",
@@ -50,6 +51,7 @@
     "mais-mongoose-seeder": "^1.0.7",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.0",
+    "sanitize-html": "^2.7.0",
     "uuid": "^8.3.2"
   },
   "engines": {

@@ -7,14 +7,16 @@
  * @date 25/03/2022
  * @version 3
  */
-
+import bcrypt from "bcrypt";
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { UserCredentialsSpec, UserArray, UserSpec, IdSpec, UserSpecPlus, JwtAuth } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 import { createToken } from "./jwt-utils.js";
 
-export const userApi = {
+const saltRounds = 10;
+
+export const userApi = {  
   find: {
     auth: {
       strategy: "jwt",
@@ -100,7 +102,9 @@ export const userApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        const user = await db.userStore.addUser(request.payload);
+        const user = request.payload;
+        user.password = await bcrypt.hash(user.password, saltRounds);
+        await db.userStore.addUser(user);
         if (user) {
           return h.response(user).code(201);
         }
@@ -158,12 +162,14 @@ export const userApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        const user = await db.userStore.getUserByEmail(request.payload.email);
-        if (!user) {
+        const {email, password} = request.payload;
+        const user = await db.userStore.getUserByEmail(email);
+        const passwordsMatch = await bcrypt.compare(password, user.password);
+        console.log(password)
+        console.log(user.password)
+        console.log(passwordsMatch)
+        if (!user || !passwordsMatch) {
           return Boom.unauthorized("User not found");
-        }
-        if (user.password !== request.payload.password) {
-          return Boom.unauthorized("Invalid password");
         }
         const token = createToken(user);
         return h.response({ success: true, token: token }).code(201);

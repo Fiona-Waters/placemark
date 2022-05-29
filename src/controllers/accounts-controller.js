@@ -5,9 +5,10 @@
  * @date 25/03/2022
  * @version 3
  */
-
+ import bcrypt from "bcrypt";
 import { db } from "../models/db.js";
 import { UserSpec, UserSpecPlus, UserCredentialsSpec } from "../models/joi-schemas.js";
+
 
 export const accountsController = {
   index: {
@@ -55,7 +56,11 @@ export const accountsController = {
     handler: async function (request, h) {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
-      if (!user || user.password !== password) {
+      console.log("USER - ", user)
+      const passwordsMatch = await bcrypt.compare(password, user.password);
+        
+      if (!user || !passwordsMatch) {
+        console.log("PASSWORD Doesnt match",user.password, password)
         return h.redirect("/");
       }
       request.cookieAuth.set({ id: user._id });
