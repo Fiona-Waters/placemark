@@ -11,6 +11,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { IdSpec, SpotSpec, SpotSpecPlus, SpotSpecArray } from "../models/joi-schemas.js";
+import { imageStore } from "../models/image-store.js";
 import { validationError } from "./logger.js";
 
 export const spotApi = {
@@ -154,5 +155,56 @@ export const spotApi = {
     tags: ["api"],
     description: "Delete a spot",
     validate: { params: { id: IdSpec }, failAction: validationError },
+  },
+
+  uploadImage: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const spot = await  db.spotStore.getSpotById(request.params.id);
+        const file = request.payload.imagefile;
+        if (Object.keys(file).length > 0) {
+          const response = await imageStore.uploadImage(request.payload.imagefile);
+          spot.img = response.url;
+          spot.imgid = response.public_id;
+          db.spotStore.updateSpot(spot._id, spot);
+        }
+        return h.response().code(200);
+      } catch (err) {
+        console.log(err);
+        return h.response().code(500);
+      }
+    },
+    tags: ["api"],
+    description: "Upload an image",
+    payload: {
+      multipart: true,
+      output: "data",
+      maxBytes: 209715200,
+      parse: true,
+    },
+  },
+
+  deleteImage: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const spot = await db.spotStore.getSpotById(request.params.id);
+        await db.imageStore.deleteImage(spot.imgid);
+        spot.img = undefined;
+        spot.imgid = undefined;
+        db.spotStore.updateSpot(spot._id, spot);
+        return h.response().code(200);
+      } catch (err) {
+        console.log(err);
+        return h.response().code(500);
+      }
+    },
+    tags: ["api"],
+    description: "Delete an image",
   },
 };

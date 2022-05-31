@@ -60,7 +60,6 @@ export const accountsController = {
       const passwordsMatch = await bcrypt.compare(password, user.password);
         
       if (!user || !passwordsMatch) {
-        console.log("PASSWORD Doesnt match",user.password, password)
         return h.redirect("/");
       }
       request.cookieAuth.set({ id: user._id });

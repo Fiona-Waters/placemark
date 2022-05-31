@@ -16,6 +16,8 @@ const spotSchema = new Schema({
   lng: Number,
   description: String,
   category: String,
+  img: String,
+  imgid: String,
   craftid: {
     type: Schema.Types.ObjectId,
     ref: "Craft",

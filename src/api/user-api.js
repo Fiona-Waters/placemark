@@ -165,9 +165,6 @@ export const userApi = {
         const {email, password} = request.payload;
         const user = await db.userStore.getUserByEmail(email);
         const passwordsMatch = await bcrypt.compare(password, user.password);
-        console.log(password)
-        console.log(user.password)
-        console.log(passwordsMatch)
         if (!user || !passwordsMatch) {
           return Boom.unauthorized("User not found");
         }

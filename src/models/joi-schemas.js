@@ -37,6 +37,8 @@ export const SpotSpec = Joi.object()
     lng: Joi.number().example(-12.32).required(),
     description: Joi.string().example("A lovely shop").required(),
     category: Joi.string().example("Shop").required(),
+    img: Joi.string(),
+    imgid: Joi.string(),
     craftid: IdSpec,
   })
   .label("Spot");
