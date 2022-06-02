@@ -207,4 +207,20 @@ export const spotApi = {
     tags: ["api"],
     description: "Delete an image",
   },
+
+  getSpotsPerCategory: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        return await db.spotStore.getSpotsPerCategory();
+      } catch (error) {
+        console.log(error)
+        return h.response().code(500);
+      }
+    },
+    tags: ["api"],
+    description: "Gets number of spots per category",
+  }
 };

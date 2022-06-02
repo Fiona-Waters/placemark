@@ -63,4 +63,13 @@ export const spotMongoStore = {
     const savedSpot = await Spot.findOne({ _id: spotid }).lean();
     return savedSpot;
   },
+
+  // function to get total spots per category
+  async getSpotsPerCategory() {
+    return Spot.aggregate([{
+      $group : {
+        _id : "$category", totaldocs : {$sum:1}
+      }
+    }])
+  }
 };

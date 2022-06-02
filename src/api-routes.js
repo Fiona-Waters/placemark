@@ -29,6 +29,7 @@ export const apiRoutes = [
   { method: "DELETE", path: "/api/spots/{id}", config: spotApi.deleteOne },
   { method: "POST", path: "/api/spots/{id}/uploadimage", config: spotApi.uploadImage },
   { method: "DELETE", path: "/api/spots/{id}/deleteimage", config: spotApi.deleteImage },
+  { method: "GET", path: "/api/spots/categories", config: spotApi.getSpotsPerCategory },
 
   { method: "GET", path: "/api/analytics", config: analyticsApi.calculate }
 ];

@@ -84,8 +84,8 @@ export const seedData = {
       _model: "Spot",
       spotOne : {
         placeName: "Winnies Craft Cafe",
-        lat: 22.23,
-        lng: -7.12,
+        lat: 53.31,
+        lng: -6.20,
         description: "A very lovely shop and cafe",
         category: "Shop",
         craftid: "->crafts.craftOne"
@@ -127,7 +127,7 @@ export const seedData = {
         lat: 51.67,
         lng: -9.45,
         description: "A cosy little yarn shop",
-        category: "Shop",
+        category: "Knit Night",
         craftid: "->crafts.craftThree"
       },
       spotSeven: {
