@@ -164,11 +164,12 @@ export const spotApi = {
     handler: async function (request, h) {
       try {
         const spot = await  db.spotStore.getSpotById(request.params.id);
+        console.log("HELLO",spot);
         const file = request.payload.imagefile;
         if (Object.keys(file).length > 0) {
           const response = await imageStore.uploadImage(request.payload.imagefile);
-          spot.img = response.url;
-          spot.imgid = response.public_id;
+          spot.images.push({img : response.url,
+            imgid: response.public_id})
           db.spotStore.updateSpot(spot._id, spot);
         }
         return h.response().code(200);
@@ -194,9 +195,10 @@ export const spotApi = {
     handler: async function (request, h) {
       try {
         const spot = await db.spotStore.getSpotById(request.params.id);
-        await db.imageStore.deleteImage(spot.imgid);
-        spot.img = undefined;
-        spot.imgid = undefined;
+        await db.imageStore.deleteImage(request.params.imgid);
+        console.log("spot",spot.images)
+        spot.images = spot.images.filter((value) =>  value.imgid !== request.params.imgid );
+        console.log("AH",spot.images)
         db.spotStore.updateSpot(spot._id, spot);
         return h.response().code(200);
       } catch (err) {

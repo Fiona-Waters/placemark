@@ -57,8 +57,7 @@ export const spotMongoStore = {
     spot.lng = sanitizeHtml(updatedSpot.lng);
     spot.description = sanitizeHtml(updatedSpot.description);
     spot.category = updatedSpot.category;
-    spot.img = updatedSpot.img;
-    spot.imgid = updatedSpot.imgid;
+    spot.images = updatedSpot.images;
     await spot.save();
     const savedSpot = await Spot.findOne({ _id: spotid }).lean();
     return savedSpot;

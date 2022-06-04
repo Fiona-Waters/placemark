@@ -41,14 +41,10 @@ export const seedData = {
       },
       craftTwo: {
         title: "Crochet",
-        img: "https://res.cloudinary.com/dbtrpapl8/image/upload/v1648157486/eufpbeabgkfdsugpxk0d.jpg",
-        imgid: "eufpbeabgkfdsugpxk0d",
         userid: "->users.homer"
       },
       craftThree: {
         title: "Spinning",
-        img: "https://res.cloudinary.com/dbtrpapl8/image/upload/v1648157574/fttphzsoflkvtba2rxzh.jpg",
-        imgid: "fttphzsoflkvtba2rxzh",
         userid: "->users.homer"
       },
       craftFour: {
@@ -88,7 +84,8 @@ export const seedData = {
         lng: -6.20,
         description: "A very lovely shop and cafe",
         category: "Shop",
-        craftid: "->crafts.craftOne"
+        craftid: "->crafts.craftOne",
+        images: [{img: "http://res.cloudinary.com/dbtrpapl8/image/upload/v1654362586/xlenn4rtgedx63ezmtxj.jpg", imgid: "xlenn4rtgedx63ezmtxj"}]
       },
       spotTwo : {
         placeName: "The Knitting Room",
@@ -96,7 +93,9 @@ export const seedData = {
         lng: -6.27,
         description: "Great service and great range of colours",
         category: "Shop",
-        craftid: "->crafts.craftOne"
+        craftid: "->crafts.craftOne",
+        images: [{img: "http://res.cloudinary.com/dbtrpapl8/image/upload/v1654363092/xmduczeqx6oxyvutgrez.jpg", imgid: "xmduczeqx6oxyvutgrez"}]
+
       },
       spotThree: {
         placeName: "The National Gallery",
@@ -104,7 +103,9 @@ export const seedData = {
         lng: -6.25,
         description: "Really interesting and beautiful exhibitions",
         category: "Exhibition",
-        craftid: "->crafts.craftFour"
+        craftid: "->crafts.craftFour",
+        images: [{img: "http://res.cloudinary.com/dbtrpapl8/image/upload/v1654363115/bicsw2sfxfdpxh4ckjhc.jpg", imgid: "bicsw2sfxfdpxh4ckjhc"}]
+
       },
       spotFour: {
         placeName: "Cahills Tramore",
@@ -112,7 +113,9 @@ export const seedData = {
         lng: -7.15,
         description: "Massive range of craft supplies.",
         category: "Shop",
-        craftid: "->crafts.craftTwo"
+        craftid: "->crafts.craftTwo",
+        images: [{img: "http://res.cloudinary.com/dbtrpapl8/image/upload/v1654363123/i5mcs5coabrholioooes.jpg", imgid: "i5mcs5coabrholioooes"}]
+
       },
       spotFive: {
         placeName: "Singer Sewing Centre",
@@ -120,7 +123,9 @@ export const seedData = {
         lng: -7.11,
         description: "A place to buy sewing machines and other supplies",
         category: "Shop",
-        craftid: "->crafts.craftFive"
+        craftid: "->crafts.craftFive",
+        images: [{img: "http://res.cloudinary.com/dbtrpapl8/image/upload/v1654362604/dp1hculkmahcll6duw1k.jpg", imgid: "dp1hculkmahcll6duw1k"}]
+
       },
       spotSix: {
         placeName: "Bantry Yarns",
