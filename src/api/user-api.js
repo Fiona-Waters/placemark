@@ -161,9 +161,7 @@ export const userApi = {
   authenticate: {
     auth: false,
     handler: async function (request, h) {
-      console.log("what about here")
       try {
-        console.log("here?")
         const {email, password} = request.payload;
         const user = await db.userStore.getUserByEmail(email);
         const passwordsMatch = await bcrypt.compare(password, user.password);
