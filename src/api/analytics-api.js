@@ -3,8 +3,8 @@
  * Functions allowing analytics information to be available
  *
  * @author Fiona Waters
- * @date 26/05/2022
- * @version 3
+ * @date 05/06/2022
+ * @version 4
  * 
  */
 

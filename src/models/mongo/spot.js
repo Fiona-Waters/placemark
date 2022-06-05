@@ -2,8 +2,8 @@
  * Spot Mongoose Schema.
  *
  * @author Fiona Waters
- * @date 25/03/2022
- * @version 3
+ * @date 05/06/2022
+ * @version 4
  */
 
 import Mongoose from "mongoose";

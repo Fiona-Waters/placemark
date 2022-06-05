@@ -2,8 +2,8 @@
  * User Mongo Store model handling User related data.
  *
  * @author Fiona Waters
- * @date 25/03/2022
- * @version 3
+ * @date 05/06/2022
+ * @version 4
  */
 import bcrypt from "bcrypt";
 import sanitizeHtml from "sanitize-html";
