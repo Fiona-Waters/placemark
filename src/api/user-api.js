@@ -161,7 +161,9 @@ export const userApi = {
   authenticate: {
     auth: false,
     handler: async function (request, h) {
+      console.log("what about here")
       try {
+        console.log("here?")
         const {email, password} = request.payload;
         const user = await db.userStore.getUserByEmail(email);
         const passwordsMatch = await bcrypt.compare(password, user.password);
@@ -171,7 +173,9 @@ export const userApi = {
         const token = createToken(user);
         return h.response({ success: true, token: token }).code(201);
       } catch (err) {
-        return Boom.serverUnavailable("Database Error");
+        console.log("hello")
+        console.log(err)
+        return Boom.serverUnavailable("Database Error", err);
       }
     },
     tags: ["api"],
