@@ -50,7 +50,7 @@
     "lowdb": "^3.0.0",
     "mais-mongoose-seeder": "^1.0.7",
     "mongodb": "^4.4.1",
-    "mongoose": "^6.2.0",
+    "mongoose": "^6.5.2",
     "sanitize-html": "^2.7.0",
     "uuid": "^8.3.2"
   },
